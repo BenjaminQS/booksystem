@@ -69,7 +69,7 @@
 								<td>${book.number}</td>
 								<td><a href="<%=appPath%>/book/detail/${book.bookId}">详情</a>
 									| <a href="<%=appPath%>/book/del/${book.bookId}">删除</a>
-									| <a href="<%=appPath%>/book/update/${book.bookId}">更改</a></td>
+									| <a href="<%=appPath%>/book/edit?bookId=${book.bookId}&name=${book.name}&number=${book.number}&detail=${book.detail}">更改</a></td>
 
 							</tr>
 						</c:forEach>

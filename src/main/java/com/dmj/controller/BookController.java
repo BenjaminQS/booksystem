@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dmj.entity.Book;
 import com.dmj.service.BookService;
@@ -73,6 +74,22 @@ public class BookController {
 			return "error";
 		}
 	}
+	
+	@RequestMapping("update")
+	public ModelAndView updateCategory(Book book){
+		bookService.updateBook(book);
+		ModelAndView mav = new ModelAndView("redirect:/book/list");
+		return mav;
+	}	
+
+	
+	@RequestMapping("edit")
+	public ModelAndView editCategory(Book book){
+		Book b= bookService.getById(book.getBookId());
+		ModelAndView mav = new ModelAndView("edit");
+		mav.addObject("b", b);
+		return mav;
+	}	
 
 	@RequestMapping(value = "/del/{bookId}", method = RequestMethod.GET)
 	@ResponseBody
